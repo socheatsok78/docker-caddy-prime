@@ -1,2 +1,4 @@
+github.com/monobilisim/caddy-ip-list@main=github.com/socheatsok78-lab/caddy-ip-list@main
 github.com/rjevski/caddy-cloudflare-origin-ca@master=github.com/socheatsok78/caddy-cloudflare-origin-ca@master
 github.com/socheatsok78/caddy-storage-rqlite=/tmp/source/caddy-storage-rqlite
+github.com/WeidiDeng/caddy-cloudflare-ip@main=github.com/socheatsok78/caddy-cloudflare-ip@main
