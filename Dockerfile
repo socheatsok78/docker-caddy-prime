@@ -4,20 +4,17 @@ ARG CADDY_VERSION=2
 FROM --platform=$BUILDPLATFORM caddy:${CADDY_BUILDER_VERSION}-builder-alpine AS build
 WORKDIR /tmp/source
 ARG CADDY_VERSION
+ARG TARGETARCH
 RUN --mount=type=bind,target=/tmp/source \
-    --mount=type=cache,sharing=locked,target=/go/pkg/mod,sharing=locked \
+    --mount=type=cache,target=/go/pkg/mod,sharing=locked \
     --mount=type=tmpfs,target=/root/.cache/go-build \
 <<EOT
-  set -xeou pipefail
-  test -f "./modules.txt" || exit 1
-  for GOOS in linux; do
-    for GOARCH in amd64 arm64; do
-      export GOOS GOARCH
-      xcaddy build v${CADDY_VERSION} --output /usr/bin/caddy-${GOOS}-${GOARCH} \
-        $(xargs -a "./modules.txt" -I {} echo --with {}) \
-        $(test -f "./replace.txt" && xargs -a "./replace.txt" -I {} echo --replace {})
-    done
-  done
+  export GOOS=linux
+  export GOARCH=${TARGETARCH}
+  xcaddy build v${CADDY_VERSION} \
+    --output /usr/bin/caddy-${GOOS}-${GOARCH} \
+    $(xargs -a "./modules.txt" -I {} echo --with {}) \
+    $(test -f "./replace.txt" && xargs -a "./replace.txt" -I {} echo --replace {})
 EOT
 
 FROM --platform=$BUILDPLATFORM scratch AS bin
