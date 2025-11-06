@@ -17,10 +17,8 @@ RUN --mount=type=bind,target=/tmp/source \
     $(test -f "./replace.txt" && xargs -a "./replace.txt" -I {} echo --replace {})
 EOT
 
-FROM --platform=$BUILDPLATFORM scratch AS bin
-ARG TARGETARCH
-COPY --link --from=build /usr/bin/caddy-linux-${TARGETARCH} /usr/bin/caddy
-
 FROM caddy:${CADDY_VERSION}-alpine
 RUN apk add -Uu --no-cache ca-certificates
-COPY --link --from=bin /usr/bin/caddy /usr/bin/caddy
+ARG TARGETARCH
+COPY --link --from=build /usr/bin/caddy-linux-${TARGETARCH} /usr/bin/caddy
+RUN caddy list-modules
