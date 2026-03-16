@@ -1,5 +1,5 @@
 variable "CADDY_VERSION" {
-  default = "2.10.2"
+  default = "2.11.2"
 }
 
 variable "GITHUB_SHA" {
