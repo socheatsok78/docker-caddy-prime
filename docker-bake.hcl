@@ -47,7 +47,7 @@ target "default" {
   inherits = [ 
     "docker-metadata-action",
     "github-metadata-action",
-]
+  ]
   args = {
     CADDY_BUILDER_VERSION = regex("^(\\d+\\.\\d+)", CADDY_VERSION)[0]
     CADDY_VERSION = CADDY_VERSION
