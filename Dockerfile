@@ -22,3 +22,6 @@ RUN apk add -Uu --no-cache ca-certificates
 ARG TARGETARCH
 COPY --link --from=build /usr/bin/caddy-linux-${TARGETARCH} /usr/bin/caddy
 RUN caddy list-modules
+ADD rootfs /
+ENTRYPOINT ["/docker-entrypoint.sh"]
+CMD [ "caddy", "run", "--config", "/etc/caddy/Caddyfile", "--adapter", "caddyfile" ]
