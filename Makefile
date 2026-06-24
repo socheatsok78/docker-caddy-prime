@@ -5,7 +5,7 @@ it: print build
 print:
 	docker buildx bake --print
 build:
-	docker buildx bake --set="*.platform=" --load
+	docker buildx bake --set="*.platform=" --load dev
 publish:
 	docker buildx bake --push
 list-modules:

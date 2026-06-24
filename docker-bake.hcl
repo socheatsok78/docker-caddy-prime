@@ -43,7 +43,7 @@ target "docker-metadata-action" {
 
 target "github-metadata-action" {}
 
-target "default" {
+target "caddy" {
   inherits = [ 
     "docker-metadata-action",
     "github-metadata-action",
@@ -52,6 +52,21 @@ target "default" {
     CADDY_BUILDER_VERSION = regex("^(\\d+\\.\\d+)", CADDY_VERSION)[0]
     CADDY_VERSION = CADDY_VERSION
   }
+}
+
+target "dev" {
+  inherits = [ "caddy" ]
+  platforms = [
+    "linux/amd64",
+    "linux/arm64",
+  ]
+  tags = [
+    "ghcr.io/${GITHUB_REPOSITORY_OWNER}/caddy-prime:${CADDY_VERSION}-dev"
+  ]
+}
+
+target "default" {
+  inherits = [ "caddy" ]
   platforms = [
     "linux/amd64",
     "linux/arm64",
