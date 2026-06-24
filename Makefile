@@ -1,7 +1,9 @@
 .EXPORT_ALL_VARIABLES:
 GITHUB_SHA ?= $(shell git rev-parse HEAD)
 
-it: build
+it: print
+print:
+	docker buildx bake --print
 build:
 	docker buildx bake --print dev
 	docker buildx bake --set="*.platform=" --load dev
