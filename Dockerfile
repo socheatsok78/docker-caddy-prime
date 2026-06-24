@@ -20,10 +20,8 @@ EOT
 FROM caddy:${CADDY_VERSION}-alpine
 RUN apk add -Uu --no-cache ca-certificates
 ADD rootfs /
-ENV CADDY_ENVFILE=/run/caddy/envfile
-RUN mkdir -p /run/caddy && touch $CADDY_ENVFILE
 ENTRYPOINT ["/docker-entrypoint.sh"]
-CMD [ "caddy", "run", "--envfile", "/run/caddy/envfile", "--config", "/etc/caddy/Caddyfile", "--adapter", "caddyfile" ]
+CMD [ "caddy", "run", "--config", "/etc/caddy/Caddyfile", "--adapter", "caddyfile" ]
 
 ARG TARGETARCH
 COPY --link --from=build /usr/bin/caddy-linux-${TARGETARCH} /usr/bin/caddy

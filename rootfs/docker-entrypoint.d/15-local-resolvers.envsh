@@ -13,6 +13,3 @@ CADDY_LOCAL_RESOLVERS=$(awk 'BEGIN{ORS=" "} $1=="nameserver" {if ($2 ~ ":") {pri
 CADDY_LOCAL_RESOLVERS="${CADDY_LOCAL_RESOLVERS% }"
 
 export CADDY_LOCAL_RESOLVERS
-
-# Add CADDY_LOCAL_RESOLVERS to the envfile so that it can be used by caddy
-echo "CADDY_LOCAL_RESOLVERS=$CADDY_LOCAL_RESOLVERS" >> "${CADDY_ENVFILE}"
