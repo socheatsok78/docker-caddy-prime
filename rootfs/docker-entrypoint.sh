@@ -44,4 +44,7 @@ if [ "$1" = "caddy" ]; then
     fi
 fi
 
+# Reset the envfile to be empty on each container start, so that we don't have stale values from previous runs.
+echo "" > "$CADDY_ENVFILE"
+
 exec "$@"
