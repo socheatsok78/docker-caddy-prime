@@ -23,3 +23,5 @@ jobs:
       permit-login: ${{ github.event_name != 'pull_request' }}
       permit-push: ${{ github.event_name != 'pull_request' }}
       permit-cache: ${{ github.event_name != 'pull_request' }}
+    secrets:
+      github-token: ${{ github.token }}
