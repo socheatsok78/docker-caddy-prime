@@ -20,6 +20,8 @@ jobs:
       contents: read
       packages: write
     with:
+      permit-login: ${{ github.event_name != 'pull_request' }}
       permit-push: ${{ github.event_name != 'pull_request' }}
+      permit-cache: ${{ github.event_name != 'pull_request' }}
     secrets:
       github-token: ${{ secrets.BUILDX_BAKE_GIT_AUTH_TOKEN }}
