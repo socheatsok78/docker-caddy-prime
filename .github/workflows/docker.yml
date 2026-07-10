@@ -24,4 +24,4 @@ jobs:
       permit-push: ${{ github.event_name != 'pull_request' }}
       permit-cache: ${{ github.event_name != 'pull_request' }}
     secrets:
-      BUILDX_BAKE_GIT_AUTH_TOKEN: ${{ github.token }}
+      BUILDX_BAKE_GIT_AUTH_TOKEN: ${{ secrets.BUILDX_BAKE_GIT_AUTH_TOKEN }}
