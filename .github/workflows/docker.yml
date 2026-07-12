@@ -20,7 +20,6 @@ jobs:
       contents: read
       packages: write
     with:
-      bake-target: caddy
       permit-login: ${{ github.event_name != 'pull_request' }}
       permit-push: ${{ github.event_name != 'pull_request' }}
       permit-cache: ${{ github.event_name != 'pull_request' }}
