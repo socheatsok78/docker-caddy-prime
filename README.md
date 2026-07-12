@@ -1,4 +1,6 @@
-<img src="https://caddyserver.com/resources/images/logo-dark.svg" alt="Caddy" height="86px"><br />
+<a href="https://caddyserver.com/">
+    <img src="https://caddyserver.com/resources/images/logo-dark.svg" alt="Caddy" height="86px">
+</a><br />
 
 A customized Caddy tailored for [@socheatsok78](https://github.com/socheatsok78), built with the following modules:
 
