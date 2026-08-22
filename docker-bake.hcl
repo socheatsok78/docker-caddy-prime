@@ -48,10 +48,8 @@ target "caddy" {
     "docker-metadata-action",
     "github-metadata-action",
   ]
-  args = {
-    CADDY_BUILDER_VERSION = regex("^(\\d+\\.\\d+)", CADDY_VERSION)[0]
-    CADDY_VERSION = CADDY_VERSION
-  }
+  dockerfile = "flake.nix"
+  target = "caddy-prime-image"
 }
 
 target "dev" {
@@ -63,6 +61,14 @@ target "dev" {
   tags = [
     "ghcr.io/${GITHUB_REPOSITORY_OWNER}/caddy-prime:${CADDY_VERSION}-dev"
   ]
+  args = {
+    "nix.impure-env.NIX_GITHUB_PRIVATE_USERNAME" = "optional"
+    "nix.impure-env.NIX_GITHUB_PRIVATE_PASSWORD" = "optional=false"
+  }
+  secret = [
+    { id = "NIX_GITHUB_PRIVATE_USERNAME", env = "NIX_GITHUB_PRIVATE_USERNAME" },
+    { id = "NIX_GITHUB_PRIVATE_PASSWORD", env = "NIX_GITHUB_PRIVATE_PASSWORD" },
+  ]
 }
 
 target "default" {
@@ -73,5 +79,12 @@ target "default" {
   ]
   tags = [
     "ghcr.io/${GITHUB_REPOSITORY_OWNER}/caddy-prime:${CADDY_VERSION}"
+  ]
+  args = {
+    "nix.impure-env.NIX_GITHUB_PRIVATE_USERNAME" = "optional"
+    "nix.impure-env.NIX_GITHUB_PRIVATE_PASSWORD" = "id=GITHUB_TOKEN,optional=false"
+  }
+  secret = [
+    { id = "NIX_GITHUB_PRIVATE_USERNAME", env = "GITHUB_REPOSITORY_OWNER" },
   ]
 }

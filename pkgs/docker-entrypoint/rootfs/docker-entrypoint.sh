@@ -10,7 +10,8 @@ entrypoint_log() {
 }
 
 if [ "$1" = "caddy" ]; then
-    if /usr/bin/find "/docker-entrypoint.d/" -mindepth 1 -maxdepth 1 -type f -print -quit 2>/dev/null | read v; then
+    # The -L tell find to follow symlinks, which is useful when most of the scripts are pvoided by /nix/store
+    if /bin/find -L "/docker-entrypoint.d/" -mindepth 1 -maxdepth 1 -type f -print -quit 2>/dev/null | read v; then
         entrypoint_log "$0: /docker-entrypoint.d/ is not empty, will attempt to perform configuration"
 
         entrypoint_log "$0: Looking for shell scripts in /docker-entrypoint.d/"

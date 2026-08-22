@@ -1,3 +1,0 @@
-[submodule "caddy-storage-rqlite"]
-	path = caddy-storage-rqlite
-	url = https://github.com/socheatsok78/caddy-storage-rqlite.git
