@@ -21,6 +21,7 @@ dockerTools.buildLayeredImage {
     caddy-prime
   ];
   config = {
+    WorkingDir = "/srv";
     Entrypoint = [ "/docker-entrypoint.sh" ];
     Cmd = [
       "caddy"
@@ -29,6 +30,11 @@ dockerTools.buildLayeredImage {
       "caddyfile"
       "--config"
       "/etc/caddy/Caddyfile"
+    ];
+    Env = [
+      "CADDY_VERSION=${caddy-prime.version}"
+      "XDG_CONFIG_HOME=/config"
+      "XDG_DATA_HOME=/data"
     ];
   };
 }
