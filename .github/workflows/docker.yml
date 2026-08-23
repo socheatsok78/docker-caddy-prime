@@ -15,7 +15,7 @@ concurrency:
 
 jobs:
   docker:
-    uses: socheatsok78/uses/.github/workflows/docker-buildx-bake.yml@main
+    uses: socheatsok78/uses/.github/workflows/docker-buildx-nix.yml@main
     permissions:
       contents: read
       packages: write
@@ -25,3 +25,4 @@ jobs:
       permit-cache: ${{ github.event_name != 'pull_request' }}
     secrets:
       BUILDX_BAKE_GIT_AUTH_TOKEN: ${{ secrets.BUILDX_BAKE_GIT_AUTH_TOKEN }}
+      NIX_GITHUB_PRIVATE_PASSWORD: ${{ secrets.BUILDX_BAKE_GIT_AUTH_TOKEN }}
