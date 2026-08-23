@@ -11,9 +11,6 @@ import (
 	_ "github.com/monobilisim/caddy-ip-list"
 	_ "github.com/rjevski/caddy-cloudflare-origin-ca"
 	_ "github.com/socheatsok78/caddy-storage-rqlite"
-
-	// Explicitly import gorqlite to ensure it is included in the build, even if not directly used in the code.
-	_ "github.com/rqlite/gorqlite"
 )
 
 func main() {

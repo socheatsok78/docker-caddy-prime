@@ -9,7 +9,6 @@ require (
 	github.com/caddyserver/caddy/v2 v2.11.4
 	github.com/monobilisim/caddy-ip-list v0.0.0-20250818180736-cd5c45325ade
 	github.com/rjevski/caddy-cloudflare-origin-ca v0.0.0-20251219173746-9be337d13e10
-	github.com/rqlite/gorqlite v0.0.0-20260504155303-50d445fd0ab9
 	github.com/socheatsok78/caddy-storage-rqlite v0.0.0-20260210035255-86682c4a716e
 )
 
@@ -98,6 +97,7 @@ require (
 	github.com/prometheus/procfs v0.20.1 // indirect
 	github.com/quic-go/qpack v0.6.0 // indirect
 	github.com/quic-go/quic-go v0.59.1 // indirect
+	github.com/rqlite/gorqlite v0.0.0-20260504155303-50d445fd0ab9 // indirect
 	github.com/rs/xid v1.6.0 // indirect
 	github.com/russross/blackfriday/v2 v2.1.0 // indirect
 	github.com/shopspring/decimal v1.4.0 // indirect
