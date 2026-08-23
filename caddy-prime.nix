@@ -38,7 +38,7 @@ buildGoModule (finalAttrs: {
 
   env = {
     HOME = "/tmp";
-    # CGO_ENABLED = 0;
+    CGO_ENABLED = 0;
     GOPRIVATE = "github.com/socheatsok78/*";
   };
 
