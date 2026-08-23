@@ -4,7 +4,7 @@
 }:
 buildGoModule (finalAttrs: {
   pname = "caddy-prime";
-  version = "2.11.4-dev";
+  version = "2.11.4";
 
   src = ./.;
 
