@@ -5,13 +5,14 @@
   caddy-prime,
 }:
 let
+  version = caddy-prime.version;
   caddyfile = callPackage ./pkgs/caddyfile { };
   docker-entrypoint = callPackage ./pkgs/docker-entrypoint { };
   index = callPackage ./pkgs/index { };
 in
 dockerTools.buildLayeredImage {
-  name = "caddy-prime";
-  tag = caddy-prime.version;
+  name = "docker-caddy-prime-${version}";
+  tag = version;
   contents = [
     dockerTools.fakeNss
     busybox
