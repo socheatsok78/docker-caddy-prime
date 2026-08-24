@@ -1,6 +1,3 @@
-.EXPORT_ALL_VARIABLES:
-GITHUB_SHA ?= $(shell git rev-parse HEAD)
-
 it: print
 print:
 	docker buildx bake --print
