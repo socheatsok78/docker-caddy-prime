@@ -15,6 +15,7 @@ dockerTools.buildLayeredImage {
   tag = version;
   contents = [
     dockerTools.fakeNss
+    dockerTools.caCertificates
     busybox
     docker-entrypoint
     caddyfile
